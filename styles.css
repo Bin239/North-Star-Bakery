@@ -430,3 +430,18 @@
       flex: 1;
     }
   }
+
+/* 1. Make the container flexible */
+figure {
+    margin: 0;
+    max-width: 100%; /* Prevents figure from overflowing its parent */
+    width: 100%;
+}
+
+/* 2. Make the image scale dynamically */
+figure img {
+    max-width: 100%; /* Allows image to shrink on smaller screens */
+    height: auto;     /* Maintains correct aspect ratio without distortion */
+    display: block;   /* Removes inline whitespace under the image */
+    margin: 0 auto;   /* Keeps the image centered inside the figure */
+}
