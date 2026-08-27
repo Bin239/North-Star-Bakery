@@ -1,1 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>North Star Bakery</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
 
+    <header>
+      <div class="logo-container">
+        <a href="index.html">
+            <img src="./asset/bakery-logo_c.png" alt="Company Logo" class="site-logo">
+        </a>
+    </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+      <!-- Welcome Section -->
+      <section class="hero-welcome">
+          <h1>Welcome to North Star Bakery</h1>
+          <p>Handcrafted artisan breads, delicate pastries, and custom cakes baked fresh daily in your neighborhood.</p>
+      </section>
+
+      <section class="hero-welcome">
+      
+        
+        <!-- Audio Player -->
+        <div class="audio-player-container">
+            <label for="welcome-audio">Listen to our welcome message:</label>
+            <audio id="welcome-audio" controls preload="metadata">
+                <source src="./asset/bakery-welcome_c.mp3" type="audio/mp3">
+                <source src="asset/welcome.ogg" type="audio/ogg">
+                  Your browser does not support the audio element.
+            </audio>
+        </div>
+    </section>
+  
+      <!-- Featured Item of the Week -->
+      <section class="featured-section">
+          <div class="featured-card">
+              <span class="badge">Featured Item of the Week</span>
+              <h2>Cardamom Cinnamon Knot</h2>
+              <p>Twisted sweet dough infused with freshly ground cardamom, layered with cinnamon butter, and finished with a light pearl sugar glaze. Available this week only!</p>
+              <span class="featured-price">$4.75 each</span>
+          </div>
+      </section>
+  
+      <!-- What We're Known For -->
+      <section class="highlights-section">
+          <h2>What We're Known For</h2>
+          <div class="highlights-grid">
+              <article class="highlight-item">
+                  <h3>Naturally Leavened</h3>
+                  <p>Our sourdoughs undergo a slow 24-hour fermentation process for optimal flavor and digestibility.</p>
+              </article>
+              <article class="highlight-item">
+                  <h3>Local Ingredients</h3>
+                  <p>We source organic stone-ground flour and dairy directly from nearby regional farms.</p>
+              </article>
+              <article class="highlight-item">
+                  <h3>Made Fresh Daily</h3>
+                  <p>Nothing sits overnight. Everything you buy was mixed, shaped, and baked early that morning.</p>
+              </article>
+          </div>
+
+          <figure>
+            <img src="sourdough.jpg" alt="Freshly baked artisan sourdough loaf on a wooden board">
+            <figcaption>Artisan Sourdough ($8.00) – Baked fresh daily using a 24-hour sourdough starter.</figcaption>
+        </figure>
+        
+      </section>
+  
+      <!-- Hours and Location Snippet -->
+      <section class="info-snippet">
+          <div class="info-block">
+              <h3>Visit Us</h3>
+              <p>901 S Oneida St.<p>
+              <p>Denver, Co, 80224</p>
+          </div>
+          <div class="info-block">
+              <h3>Hours</h3>
+              <p><strong>Tue – Fri:</strong> 7:00 AM – 4:00 PM</p>
+              <p><strong>Sat – Sun:</strong> 8:00 AM – 2:00 PM</p>
+              <p><strong>Mon:</strong> Closed</p>
+          </div>
+      </section>
+  </main>
+
+    <footer>
+        <p>&copy; 2026 My Website. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
