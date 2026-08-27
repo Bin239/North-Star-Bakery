@@ -1,1 +1,432 @@
-
+/* ==========================================================================
+   1. Design System Variables
+   ========================================================================== */
+   :root {
+    --bg-main: #fdfbf7;
+    --bg-surface: #efebe9;
+    --card-bg: #ffffff;
+    --text-primary: #3e2723;
+    --text-secondary: #4e342e;
+    --text-muted: #5d4037;
+    --accent-cinnamon: #8d6e63;
+    --accent-honey: #ffa000;
+    --accent-green: #27ae60;
+    --accent-green-bg: #eafaf1;
+    --policy-bg: #fff8e1;
+    --policy-border: #ffe082;
+    --border-color: #e0e0e0;
+    --border-input: #cccccc;
+    --font-base: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-pill: 30px;
+    --transition-fast: background-color 0.2s ease, color 0.2s ease;
+  }
+  
+  /* ==========================================================================
+     2. Base & Typography (Mobile Defaults)
+     ========================================================================== */
+  * {
+    box-sizing: border-box;
+  }
+  
+  body {
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    font-family: var(--font-base);
+    margin: 0;
+    padding: 130px 15px 20px 15px; /* Top padding clears fixed stacked header */
+    line-height: 1.6;
+  }
+  
+  main {
+    padding: 0.5rem;
+  }
+  
+  h1, h2 {
+    color: var(--text-primary);
+    margin-top: 0;
+  }
+  
+  h1 {
+    font-size: 1.8rem;
+  }
+  
+  h3 {
+    color: var(--accent-cinnamon);
+    margin-top: 0;
+  }
+  
+  p {
+    color: var(--text-muted);
+  }
+  
+  /* ==========================================================================
+     3. Header & Navigation (Logo Top-Center, Nav Below)
+     ========================================================================== */
+  header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: var(--card-bg);
+    border-bottom: 2px solid var(--bg-surface);
+    box-shadow: 0 2px 8px rgba(62, 39, 35, 0.08);
+    padding: 10px 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .logo-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .site-logo {
+    height: 45px;
+    width: auto;
+    display: block;
+  }
+  
+  nav {
+    width: 100%;
+  }
+  
+  nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  nav a {
+    display: inline-block;
+    color: var(--text-primary);
+    font-weight: 600;
+    text-decoration: none;
+    padding: 6px 10px;
+    font-size: 0.9rem;
+    border-radius: var(--radius-sm);
+    transition: var(--transition-fast);
+  }
+  
+  nav a:hover,
+  nav a.active {
+    color: var(--accent-cinnamon);
+    background-color: var(--bg-surface);
+  }
+  
+  nav a[aria-current='page'] {
+    color: var(--text-primary);
+    background-color: #d4d4d4;
+  }
+  
+  /* ==========================================================================
+     4. Mobile Section Layouts (Single Column Stack)
+     ========================================================================== */
+  .hero-welcome,
+  .about-hero,
+  .contact-header {
+    text-align: center;
+    padding: 25px 15px;
+    background-color: var(--bg-main);
+    border-radius: var(--radius-md);
+    margin-bottom: 30px;
+  }
+  
+  .featured-section,
+  .highlights-section,
+  .team-section,
+  .product-category,
+  .story-section,
+  .philosophy-section {
+    margin-bottom: 35px;
+  }
+  
+  .featured-card {
+    background: var(--policy-bg);
+    border: 2px dashed var(--accent-honey);
+    border-radius: var(--radius-md);
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .badge {
+    background-color: var(--accent-honey);
+    color: #ffffff;
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: var(--radius-sm);
+    display: inline-block;
+    margin-bottom: 8px;
+  }
+  
+  .featured-price {
+    display: inline-block;
+    margin-top: 10px;
+    font-weight: bold;
+    color: #d84315;
+  }
+  
+  /* Mobile Grids (Default to vertical stacks) */
+  .highlights-grid,
+  .philosophy-grid,
+  .team-grid,
+  .product-grid,
+  .info-snippet,
+  .contact-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .highlight-item,
+  .team-card,
+  .product-card,
+  .philosophy-card,
+  .form-section,
+  .info-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 18px;
+  }
+  
+  .highlight-item,
+  .team-card {
+    text-align: center;
+  }
+  
+  .philosophy-card {
+    border-left: 4px solid var(--accent-cinnamon);
+  }
+  
+  .info-snippet {
+    background-color: var(--bg-surface);
+    padding: 20px;
+    border-radius: var(--radius-md);
+  }
+  
+  .info-block h3,
+  .info-card h2,
+  .info-card h3 {
+    border-bottom: 2px solid var(--accent-cinnamon);
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+  }
+  
+  .team-avatar {
+    width: 55px;
+    height: 55px;
+    background-color: #d7ccc8;
+    color: var(--text-primary);
+    font-weight: bold;
+    font-size: 1.1rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 12px auto;
+  }
+  
+  .team-role {
+    display: inline-block;
+    font-size: 0.85rem;
+    color: var(--accent-cinnamon);
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .price-range {
+    display: inline-block;
+    font-weight: bold;
+    color: var(--accent-green);
+    background-color: var(--accent-green-bg);
+    padding: 6px 12px;
+    border-radius: var(--radius-sm);
+  }
+  
+  .store-notice {
+    background-color: #f8f9fa;
+    border-left: 4px solid #007bff;
+    padding: 15px;
+    margin-top: 30px;
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  }
+  
+  /* ==========================================================================
+     5. Form Controls & Sidebar
+     ========================================================================== */
+  .form-group {
+    margin-bottom: 18px;
+  }
+  
+  .form-group label {
+    display: block;
+    font-weight: bold;
+    color: var(--text-secondary);
+    margin-bottom: 6px;
+    font-size: 0.95rem;
+  }
+  
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--border-input);
+    border-radius: var(--radius-sm);
+    font-size: 1rem;
+    font-family: inherit;
+  }
+  
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: var(--accent-cinnamon);
+    outline: none;
+    box-shadow: 0 0 4px rgba(141, 110, 99, 0.4);
+  }
+  
+  .submit-btn {
+    background-color: var(--text-primary);
+    color: #ffffff;
+    border: none;
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    width: 100%;
+    transition: var(--transition-fast);
+  }
+  
+  .submit-btn:hover {
+    background-color: var(--accent-cinnamon);
+  }
+  
+  .hours-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .hours-list li {
+    margin-bottom: 6px;
+    font-size: 0.95rem;
+  }
+  
+  .hours-list span {
+    font-weight: bold;
+    display: block;
+  }
+  
+  .preorder-policy {
+    background-color: var(--policy-bg);
+    border: 1px solid var(--policy-border);
+  }
+  
+  /* Audio Player */
+  .audio-player-container {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .audio-player-container audio {
+    max-width: 100%;
+    width: 300px;
+    border-radius: var(--radius-pill);
+  }
+  
+  /* Footer */
+  footer {
+    background-color: var(--bg-surface);
+    color: var(--text-muted);
+    border-top: 1px solid var(--border-color);
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+  }
+  
+  /* ==========================================================================
+     6. DESKTOP & LARGER SCREENS MEDIA QUERY (min-width: 769px)
+     ========================================================================== */
+  @media (min-width: 769px) {
+    body {
+      padding: 140px 40px 30px 40px;
+    }
+  
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 1rem;
+    }
+  
+    h1 {
+      font-size: 2.4rem;
+    }
+  
+    .site-logo {
+      height: 60px; /* Larger logo on desktop */
+    }
+  
+    nav ul {
+      gap: 15px;
+    }
+  
+    nav a {
+      padding: 8px 14px;
+      font-size: 1rem;
+    }
+  
+    /* Expand Layouts to Multi-Column Rows */
+    .highlights-grid,
+    .philosophy-grid,
+    .team-grid {
+      flex-direction: row;
+      gap: 20px;
+    }
+  
+    .product-grid {
+      flex-direction: row;
+      gap: 20px;
+    }
+  
+    .product-card {
+      flex: 1 1 calc(50% - 20px); /* 2 cards per row */
+    }
+  
+    .info-snippet {
+      flex-direction: row;
+      justify-content: space-around;
+      padding: 25px;
+    }
+  
+    .contact-container {
+      flex-direction: row;
+      gap: 40px;
+      align-items: flex-start;
+    }
+  
+    .form-section {
+      flex: 2;
+      padding: 30px;
+    }
+  
+    .info-sidebar {
+      flex: 1;
+    }
+  }
