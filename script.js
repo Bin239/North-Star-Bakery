@@ -148,3 +148,68 @@ function updateCartUI() {
   const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
   cartBadge.textContent = totalItems;
 }
+
+// Open & Close Cart Modal Controls
+function setupCartModalEvents() {
+  const modal = document.getElementById("cart-modal");
+  const openBtn = document.getElementById("cart-toggle-btn");
+  const closeBtn = document.getElementById("close-cart-btn");
+  const clearBtn = document.getElementById("clear-cart-btn");
+
+  if (!modal || !openBtn) return;
+
+  openBtn.addEventListener("click", () => {
+    renderCartModalItems();
+    modal.classList.add("active");
+  });
+
+  closeBtn?.addEventListener("click", () => {
+    modal.classList.remove("active");
+  });
+
+  clearBtn?.addEventListener("click", () => {
+    cart = [];
+    saveCart();
+    renderCartModalItems();
+  });
+}
+
+// Render Saved Items inside Modal
+function renderCartModalItems() {
+  const container = document.getElementById("cart-items-container");
+  const totalPriceEl = document.getElementById("cart-total-price");
+  if (!container) return;
+
+  container.innerHTML = "";
+
+  if (cart.length === 0) {
+    container.innerHTML = "<p>Your cart is empty.</p>";
+    if (totalPriceEl) totalPriceEl.textContent = "$0.00";
+    return;
+  }
+
+  let total = 0;
+  cart.forEach(item => {
+    const itemTotal = item.price * item.quantity;
+    total += itemTotal;
+
+    const row = document.createElement("div");
+    row.className = "cart-item-row";
+    row.innerHTML = `
+      <div>
+        <strong>${item.name}</strong>
+        <div>$${item.price.toFixed(2)} × ${item.quantity}</div>
+      </div>
+      <strong>$${itemTotal.toFixed(2)}</strong>
+    `;
+    container.appendChild(row);
+  });
+
+  if (totalPriceEl) totalPriceEl.textContent = `$${total.toFixed(2)}`;
+}
+
+// Attach listener on DOM Load
+document.addEventListener("DOMContentLoaded", () => {
+  setupCartModalEvents();
+  updateCartUI();
+});
