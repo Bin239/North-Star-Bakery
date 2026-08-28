@@ -227,3 +227,77 @@ document.addEventListener("DOMContentLoaded", () => {
   setupCartModalEvents();
   updateCartUI();
 });
+
+function setupFormValidation() {
+  const form = document.getElementById("contact-form");
+  if (!form) return;
+
+  form.addEventListener("submit", (event) => {
+    event.preventDefault(); // Stop page reload
+
+    // Form inputs
+    const nameInput = document.getElementById("name");
+    const emailInput = document.getElementById("email");
+    const requestTypeInput = document.getElementById("request-type");
+    const detailsInput = document.getElementById("item-details");
+
+    // Error feedback containers
+    const nameError = document.getElementById("name-error");
+    const emailError = document.getElementById("email-error");
+    const requestTypeError = document.getElementById("request-type-error");
+    const detailsError = document.getElementById("details-error");
+    const successMsg = document.getElementById("form-success-msg");
+
+    // Reset messages
+    nameError.textContent = "";
+    emailError.textContent = "";
+    requestTypeError.textContent = "";
+    detailsError.textContent = "";
+    if (successMsg) successMsg.textContent = "";
+
+    let isValid = true;
+
+    // 1. Name: Required + Minimum Length Check
+    if (!nameInput.value.trim()) {
+      nameError.textContent = "Full name is required.";
+      isValid = false;
+    } else if (nameInput.value.trim().length < 2) {
+      nameError.textContent = "Name must be at least 2 characters long.";
+      isValid = false;
+    }
+
+    // 2. Email: Email Format Validation
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailInput.value.trim()) {
+      emailError.textContent = "Email address is required.";
+      isValid = false;
+    } else if (!emailPattern.test(emailInput.value.trim())) {
+      emailError.textContent = "Please enter a valid email address.";
+      isValid = false;
+    }
+
+    // 3. Request Type: Required Selection Check
+    if (!requestTypeInput.value) {
+      requestTypeError.textContent = "Please select a request type.";
+      isValid = false;
+    }
+
+    // 4. Details: Required Field Check
+    if (!detailsInput.value.trim()) {
+      detailsError.textContent = "Please provide item details or inquiry notes.";
+      isValid = false;
+    }
+
+    // On Successful Validation
+    if (isValid) {
+      if (successMsg) {
+        successMsg.textContent = "Thank you! Your request has been sent successfully.";
+      }
+      form.reset();
+    }
+  });
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  setupFormValidation();
+});
