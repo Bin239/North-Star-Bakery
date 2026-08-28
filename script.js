@@ -107,3 +107,44 @@ document.addEventListener("DOMContentLoaded", () => {
   renderProductCatalog();
   populateProductDropdown();
 });
+
+// ==========================================================================
+// 1. CART STATE & LOCALSTORAGE (Array of Objects)
+// ==========================================================================
+let cart = JSON.parse(localStorage.getItem("bakery_cart")) || [];
+
+// Save cart array to localStorage
+function saveCart() {
+  localStorage.setItem("bakery_cart", JSON.stringify(cart));
+  updateCartUI();
+}
+
+// Add product to cart by ID
+function addToCart(productId) {
+  const product = bakeryProducts.find(item => item.id === productId);
+  if (!product) return;
+
+  const existingItem = cart.find(item => item.id === productId);
+  if (existingItem) {
+    existingItem.quantity += 1;
+  } else {
+    cart.push({
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      quantity: 1
+    });
+  }
+
+  saveCart();
+  alert(`${product.name} added to your cart!`);
+}
+
+// Update Header Cart Count Display
+function updateCartUI() {
+  const cartBadge = document.getElementById("cart-count");
+  if (!cartBadge) return;
+
+  const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+  cartBadge.textContent = totalItems;
+}
