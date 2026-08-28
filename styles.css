@@ -555,3 +555,18 @@ figure img {
 .add-cart-btn:hover {
   background-color: var(--accent-cinnamon);
 }
+
+.error-msg {
+  color: #d32f2f;
+  font-size: 0.85rem;
+  margin-top: 4px;
+  display: block;
+  font-weight: 500;
+}
+
+.success-msg {
+  color: #2e7d32;
+  font-size: 1rem;
+  margin-top: 15px;
+  font-weight: bold;
+}
