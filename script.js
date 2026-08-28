@@ -56,16 +56,16 @@ const bakeryProducts = [
 // 2. DYNAMIC RENDERING FUNCTIONS
 // ==========================================================================
 
-// Render Product Cards on products.html
+// Render Product Cards on products.html with working Add to Cart buttons
 function renderProductCatalog() {
   const breadsGrid = document.getElementById("breads-grid");
   const pastriesGrid = document.getElementById("pastries-grid");
   const cakesGrid = document.getElementById("cakes-grid");
 
-  // Exit if not on products.html page
+  // Exit gracefully if not on products.html
   if (!breadsGrid || !pastriesGrid || !cakesGrid) return;
 
-  // Clear existing content
+  // Clear existing static/placeholder content
   breadsGrid.innerHTML = "";
   pastriesGrid.innerHTML = "";
   cakesGrid.innerHTML = "";
@@ -73,12 +73,26 @@ function renderProductCatalog() {
   bakeryProducts.forEach(product => {
     const card = document.createElement("article");
     card.className = "product-card";
+
+    // Build internal HTML including product details and the button
     card.innerHTML = `
       <h3>${product.name}</h3>
       <p>${product.description}</p>
-      <span class="price-range">${product.priceRange}</span>
+      <div class="product-card-footer">
+        <span class="price-range">${product.priceRange}</span>
+        <button type="button" class="add-cart-btn" data-id="${product.id}">
+          Add to Cart
+        </button>
+      </div>
     `;
 
+    // Attach event listener to the button
+    const btn = card.querySelector(".add-cart-btn");
+    btn.addEventListener("click", () => {
+      addToCart(product.id);
+    });
+
+    // Append card to its matching category grid
     if (product.category === "Breads") {
       breadsGrid.appendChild(card);
     } else if (product.category === "Pastries") {
