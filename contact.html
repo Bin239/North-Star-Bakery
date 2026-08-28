@@ -118,7 +118,27 @@
     <footer>
         <p>&copy; 2026 My Website. All rights reserved.</p>
     </footer>
-
+                <!-- CART OVERLAY MODAL -->
+        <div id="cart-modal" class="cart-modal" aria-hidden="true">
+          <div class="cart-modal-content">
+            <div class="cart-header">
+              <h2>Your Bakery Order</h2>
+              <button type="button" id="close-cart-btn" class="close-btn">&times;</button>
+            </div>
+            
+            <div id="cart-items-container" class="cart-items-list">
+              <!-- Populated dynamically by script.js -->
+            </div>
+        
+            <div class="cart-footer">
+              <div class="cart-total-row">
+                <span>Total:</span>
+                <strong id="cart-total-price">$0.00</strong>
+              </div>
+              <button type="button" id="clear-cart-btn" class="secondary-btn">Clear Cart</button>
+            </div>
+          </div>
+        </div>
     <script src="script.js"></script>
 </body>
 </html>
